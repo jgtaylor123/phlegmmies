@@ -25131,76 +25131,32 @@ const app = flamelink({
   messagingSenderId: "731501145424"
 });
 
-// var firstResponse = [];
-// var select = document.getElementById("selectCategory");
-
-app.nav.get('mainMenu')
-.then(menu => console.log('Main menu:', menu))
-.catch(error => console.error('Something went wrong while retrieving the menu. Details:', error));
-
-
-// #message { background: white; max-width: 560px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-
-// a = document.createElement('a');
-// a.href =  'thanks.html'; // Insted of calling setAttribute
-// a.innerHTML = "Link" // <a>INNER_TEXT</a>
-// mainMenuDiv.appendChild(a); // Append the link to the div
-// And append the div to the document body
-
-app.nav.getItems('mainMenu')
-  .then(items => console.log('Menu items:', items[0].title))
-  .catch(error => console.error('Something went wrong while retrieving the menu items. Details:', error));
-
-  var mainMenuDiv = document.createElement("div"); //Create left div
-  mainMenuDiv.id = "mainMenu"; //Assign div id
-  mainMenuDiv.setAttribute("style", "float:top; width:100%; line-height: 26px; text-align:top; font-size:12pt; padding-left:8px; height:26px;"); //Set div attributes
-  mainMenuDiv.style.background =  "#ffa100";
+  // var mainMenuDiv = document.createElement("header-nav");
+  // var myTopnav = document.getElementById("myTopnav");
+  // mainMenuDiv.id = "mainMenu";
+  // mainMenuDiv.setAttribute("style", "float:top; width:100%; line-height: 26px; text-align:top; font-size:12pt; padding-left:8px; height:26px;"); //Set div attributes
+  // mainMenuDiv.style.background =  "#ffa100";
 
   app.nav.getItems('mainMenu')
     .then(items => {
       for(var key in items) {
         menuRecord = items[key];
-        console.log(menuRecord.title);
-        console.log(menuRecord.url);
-        a = document.createElement('a');
-        a.href =  menuRecord.url;
-        a.innerHTML = menuRecord.title;
-        mainMenuDiv.appendChild(a);
+
+        var str = menuRecord.title;
+        var result = str.link(menuRecord.url);
+        div = document.getElementById( 'myTopnav' );
+        div.insertAdjacentHTML( 'beforeend', result );
+        // document.getElementById("myTopnav").appendChild(result);
+
+        // document.write("<a href='" + menuRecord.url + "'>" + menuRecord.title + "</a> ||");
+        // a = document.createElement('a');
+        // a.href =  menuRecord.url;
+        // a.innerHTML = menuRecord.title;
+        // myTopnav.appendChild(a);
     }
-    document.body.appendChild(mainMenuDiv);
+    // document.body.appendChild(myTopnav);
   })
   .catch(error => console.error('Something went wrong while retrieving the entry. Details:', error));
-// app.nav.get('mainMenu', { fields: [ 'items' ] })
-//   .then(menu => {
-//
-//      for(var key in menu) {
-//         if(menu.hasOwnProperty(key)) {
-//           menuRecord = menu[key];
-//           console.log(menuRecord.items[0]);
-//
-//           // var select = document.getElementById("selectCategory");
-//           // select.options[select.options.length] = new Option(categoryRecord.category, categoryRecord.id);
-//
-//         }
-//      }
-//   })
-//   .catch(error => console.error('Something went wrong while retrieving the entry. Details:', error));
-//
-
-  // app.nav.get('mainMenu', { fields: [ 'title', 'url' ] })
-  //   .then(response => {
-  //
-  //      for(var key in response) {
-  //         if(response.hasOwnProperty(key)) {
-  //           menuRecord = response[key];
-  //           // var select = document.getElementById("selectCategory");
-  //           // select.options[select.options.length] = new Option(categoryRecord.category, categoryRecord.id);
-  //           console.log(menuRecord.items[0]);
-  //
-  //         }
-  //      }
-  //   })
-  //   .catch(error => console.error('Something went wrong while retrieving the entry. Details:', error));
 
 },{"flamelink":15}],19:[function(require,module,exports){
 // shim for using process in browser
