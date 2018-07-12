@@ -32,10 +32,6 @@
       #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
       #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
 
-      #firebase_docs { background: white; max-width:350px; margin: 10px auto 8px; padding: 10px 10px; border-radius: 3px; }
-      #firebase_docs h2 { color: #ffa100; font-weight: bold; font-size: 8px; margin: 0 0 8px; }
-      #firebase_docs a { display: block; text-align: center; vertical-align: middle; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 8px; border-radius: 4px; }
-
       .button {
           background-color: #4CAF50;
           border: none;
@@ -51,7 +47,7 @@
 
       @media (max-width: 1000px) {
         body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
+        /* body { border-top: 16px solid #ffa100; } */
       }
     </style>
 
@@ -61,6 +57,10 @@
     <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
     <script src="//unpkg.com/flamelink/dist/flamelink.js"></script>
     <script src="index_browserfyBundle.js"></script>
+
+    <div id="navigation">
+          <script src="getNavigation_browserfyBundle.js"></script>
+    </div>
 
     <div id="message">
       <h2>Thanks!!!</h2>
