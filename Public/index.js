@@ -1,4 +1,5 @@
 const flamelink = require('flamelink');
+var uniqid = require('uniqid');
 
 const app = flamelink({
   apiKey: "AIzaSyCg0mw1NQOiOzwADfoMm21K5FRBCRLtFeQ",
@@ -9,17 +10,16 @@ const app = flamelink({
   messagingSenderId: "731501145424"
 });
 
-var clipURL = document.getElementById("clipURL");
-var clipCategory = document.getElementById("selectCategory");
-var submitButton = document.getElementById("submitButton");
-
 window.submitClick = function() {
   var messageText = document.getElementById("clipURL").value;
   var categoryId = document.getElementById("selectCategory").value;
-  window.alert("URL:" + messageText + "\nCat:" + categoryId);
 
-
-  app.content.set('clips', '1528201892192', { url: messageText, category: categoryId, score: '5'  })
+  // To create a new clip entry, use uniqid() for the documentID (arg 2)
+  // to update and existing clip field value, use the existing documentID
+  app.content.set('clips', uniqid(), { url: messageText, category: categoryId, score: '1'  })
     .then(() => console.log('Updating the entry succeeded'))
     .catch(() => console.error('Something went wrong while updating the entry.'));
+
+  window.location.href = "thanks.html";
+  return false;
 }

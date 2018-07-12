@@ -16060,7 +16060,7 @@ exports.DataSnapshot = DataSnapshot;
 exports.OnDisconnect = OnDisconnect;
 
 }).call(this,require('_process'))
-},{"@firebase/app":1,"@firebase/logger":4,"@firebase/util":8,"_process":19,"tslib":16}],4:[function(require,module,exports){
+},{"@firebase/app":1,"@firebase/logger":4,"@firebase/util":8,"_process":21,"tslib":16}],4:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', { value: true });
@@ -19042,7 +19042,7 @@ var startsWith = _core.String.startsWith;
  */
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("timers").setImmediate)
-},{"timers":20,"whatwg-fetch":17}],7:[function(require,module,exports){
+},{"timers":22,"whatwg-fetch":18}],7:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', { value: true });
@@ -24652,6 +24652,52 @@ var __importDefault;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{}],17:[function(require,module,exports){
+(function (process){
+/* 
+(The MIT License)
+Copyright (c) 2014 Halász Ádám <mail@adamhalasz.com>
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
+
+//  Unique Hexatridecimal ID Generator
+// ================================================
+
+//  Dependencies
+// ================================================
+var pid = process && process.pid ? process.pid.toString(36) : '' ;
+var address = '';
+if(typeof __webpack_require__ !== 'function'){
+    var mac = '', networkInterfaces = require('os').networkInterfaces();
+    for(interface_key in networkInterfaces){
+        const networkInterface = networkInterfaces[interface_key];
+        const length = networkInterface.length;
+        for(var i = 0; i < length; i++){
+            if(networkInterface[i].mac && networkInterface[i].mac != '00:00:00:00:00:00'){
+                mac = networkInterface[i].mac; break;
+            }
+        }
+    }
+    address = mac ? parseInt(mac.replace(/\:|\D+/gi, '')).toString(36) : '' ;
+} 
+
+//  Exports
+// ================================================
+module.exports = module.exports.default = function(prefix){ return (prefix || '') + address + pid + now().toString(36); }
+module.exports.process = function(prefix){ return (prefix || '') + pid + now().toString(36); }
+module.exports.time    = function(prefix){ return (prefix || '') + now().toString(36); }
+
+//  Helpers
+// ================================================
+function now(){
+    var time = Date.now();
+    var last = now.last || time;
+    return now.last = time > last ? time : last + 1;
+}
+
+}).call(this,require('_process'))
+},{"_process":21,"os":20}],18:[function(require,module,exports){
 (function(self) {
   'use strict';
 
@@ -25119,8 +25165,9 @@ var __importDefault;
   self.fetch.polyfill = true
 })(typeof self !== 'undefined' ? self : this);
 
-},{}],18:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 const flamelink = require('flamelink');
+var uniqid = require('uniqid');
 
 const app = flamelink({
   apiKey: "AIzaSyCg0mw1NQOiOzwADfoMm21K5FRBCRLtFeQ",
@@ -25131,22 +25178,77 @@ const app = flamelink({
   messagingSenderId: "731501145424"
 });
 
-var clipURL = document.getElementById("clipURL");
-var clipCategory = document.getElementById("selectCategory");
-var submitButton = document.getElementById("submitButton");
+// var clipURL = document.getElementById("clipURL");
+// var clipCategory = document.getElementById("selectCategory");
+// var submitButton = document.getElementById("submitButton");
 
 window.submitClick = function() {
   var messageText = document.getElementById("clipURL").value;
   var categoryId = document.getElementById("selectCategory").value;
-  window.alert("URL:" + messageText + "\nCat:" + categoryId);
+  // window.alert("URL:" + messageText + "\nCat:" + categoryId);
 
-
-  app.content.set('clips', '1528201892192', { url: messageText, category: categoryId, score: '5'  })
+  // To create a new clip entry, use uniqid() for the documentID (arg 2)
+  // to update and existing clip field value, use the existing documentID
+  app.content.set('clips', uniqid(), { url: messageText, category: categoryId, score: '1'  })
     .then(() => console.log('Updating the entry succeeded'))
     .catch(() => console.error('Something went wrong while updating the entry.'));
+
+  window.location.href = "thanks.html";
+  return false;
 }
 
-},{"flamelink":15}],19:[function(require,module,exports){
+},{"flamelink":15,"uniqid":17}],20:[function(require,module,exports){
+exports.endianness = function () { return 'LE' };
+
+exports.hostname = function () {
+    if (typeof location !== 'undefined') {
+        return location.hostname
+    }
+    else return '';
+};
+
+exports.loadavg = function () { return [] };
+
+exports.uptime = function () { return 0 };
+
+exports.freemem = function () {
+    return Number.MAX_VALUE;
+};
+
+exports.totalmem = function () {
+    return Number.MAX_VALUE;
+};
+
+exports.cpus = function () { return [] };
+
+exports.type = function () { return 'Browser' };
+
+exports.release = function () {
+    if (typeof navigator !== 'undefined') {
+        return navigator.appVersion;
+    }
+    return '';
+};
+
+exports.networkInterfaces
+= exports.getNetworkInterfaces
+= function () { return {} };
+
+exports.arch = function () { return 'javascript' };
+
+exports.platform = function () { return 'browser' };
+
+exports.tmpdir = exports.tmpDir = function () {
+    return '/tmp';
+};
+
+exports.EOL = '\n';
+
+exports.homedir = function () {
+	return '/'
+};
+
+},{}],21:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -25332,7 +25434,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],20:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 (function (setImmediate,clearImmediate){
 var nextTick = require('process/browser.js').nextTick;
 var apply = Function.prototype.apply;
@@ -25411,4 +25513,4 @@ exports.clearImmediate = typeof clearImmediate === "function" ? clearImmediate :
   delete immediateIds[id];
 };
 }).call(this,require("timers").setImmediate,require("timers").clearImmediate)
-},{"process/browser.js":19,"timers":20}]},{},[18]);
+},{"process/browser.js":21,"timers":22}]},{},[19]);
