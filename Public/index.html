@@ -40,12 +40,23 @@
       <br>
       <div id="input_clip">
         <h2>Enter a clip URL</h2>
-        <textarea rows="1" cols="50" id="clipURL" placeholder="Enter your url here ...">https://www.youtube.com/watch?v=d2BKT-8FD4s</textarea>
-        <button id="submitButton" class="button" onclick="submitClick()">Submit a clip</button>
+
+        <textarea rows="1" cols="50" id="clipURL" placeholder="Enter your url here ...">https://www.youtube.com/watch?v=d2BKT-8FD4s</textarea><br>
+        <textarea rows="1" cols="50" id="nominee" placeholder="Who or what are you nominating?">David Carouso</textarea><br>
+        <textarea rows="1" cols="50" id="show" placeholder="What is the show?">CSI Miami</textarea><br>
+
+        <select name="season" id="season">
+          <option value="2018">2018</option>
+          <option value="2017">2017</option>
+        </select>
+
 
         <select id="selectCategory">
             <script src="getCategories_browserfyBundle.js"></script>
-        </select>
+        </select> <br>
+
+        <button id="submitButton" class="button" onclick="submitClick()">Submit a clip</button>
+
 
       </div>
     </div>
