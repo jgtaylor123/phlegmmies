@@ -19,14 +19,15 @@
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
 
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+    <script src="//unpkg.com/flamelink/dist/flamelink.js"></script>
+    <script src="index_browserfyBundle.js"></script>
 
 
   </head>
   <body>
 
-    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
-    <script src="//unpkg.com/flamelink/dist/flamelink.js"></script>
-    <script src="index_browserfyBundle.js"></script>
+
 
     <div class="topnav" id="myTopnav">
       <script src="getNavigation_browserfyBundle.js"></script>
@@ -52,7 +53,7 @@
 
 
         <select id="selectCategory">
-            <script src="getCategories_browserfyBundle.js"></script>
+            <script src="makeCategorySelector_browserfyBundle.js"></script>
         </select> <br>
 
         <button id="submitButton" class="button" onclick="submitClick()">Submit a clip</button>

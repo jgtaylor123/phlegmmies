@@ -1,0 +1,20 @@
+$(document).ready(function(){
+
+  var rootRef = firebase.database().ref()
+    .child("flamelink")
+    .child("environments")
+    .child("production")
+    .child("content")
+    .child("category")
+    .child("en-US");
+
+  rootRef.on("child_added", snap => {
+
+    var categoryName = snap.child("category").val();
+    var categoryId = snap.child("id").val();
+
+    // $("#selectCategory").append("<option value='" + categoryId + "'>" + categoryName + "</option>");
+
+  });
+
+});

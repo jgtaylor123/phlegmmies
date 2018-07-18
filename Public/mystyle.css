@@ -7,7 +7,8 @@
     padding: 0;
     background-image: url("images/green-splat-vector-clipart.png");
   }
-  #message { background: white; max-width: 560px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
+  /* #message { background: white; max-width: 560px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; } */
+  #message { background: white; padding: 32px 24px;}
   #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
   #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
   #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
@@ -56,6 +57,43 @@
   .topnav .icon {
     display: none;
   }
+
+  /* Style the tab */
+  .nomineeTab {
+      overflow: hidden;
+      border: 1px solid #ccc;
+      background-color: #f1f1f1;
+  }
+
+  /* Style the buttons that are used to open the tab content */
+  .nomineeTab button {
+      background-color: inherit;
+      float: left;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      transition: 0.3s;
+  }
+
+  /* Change background color of buttons on hover */
+  .nomineeTab button:hover {
+      background-color: #ddd;
+  }
+
+  /* Create an active/current tablink class */
+  .nomineeTab button.active {
+      background-color: #ccc;
+  }
+
+  /* Style the tab content */
+  .tabcontent {
+      display: none;
+      padding: 6px 12px;
+      border: 1px solid #ccc;
+      border-top: none;
+  }
+
 
 
   @media (max-width: 1800px) {
