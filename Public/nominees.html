@@ -17,7 +17,7 @@
     <script defer src="/__/firebase/5.0.3/firebase-storage.js"></script>
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
-    
+
   </head>
   <body>
 
@@ -31,8 +31,50 @@
 
     <div id="message">
       <h2>And the Nominees Are...</h2>
+    </div>
 
+    <!-- Tab links -->
+    <div id="nomineeTab" class="nomineeTab">
+        <script src="makeNomineeTabs_browserfyBundle.js"></script>
+    </div>
+
+    <!-- Tab content -->
+    <div id="tabcontent">
+
+        <script src="makeNomineeContent_browserfyBundle.js"></script>
+      <!-- <div id="Worst Actor" class="tabcontent">
+        <h3>Worst Actor</h3>
+        <p>Let's put the list of worst actors here</p>
       </div>
+
+      <div id="Worst Actress" class="tabcontent">
+        <h3>Worst Actress</h3>
+        <p>Let's put the list of worst actresses here</p>
+      </div>
+
+      <div id="Worst Show" class="tabcontent">
+        <h3>Worst Show</h3>
+        <p>Let's put the list of worst shows here</p>
+      </div> -->
+
+    </div>
+    <script>
+      function openCategory(evt, category) {
+          var i, tabcontent, tablinks;
+          tabcontent = document.getElementsByClassName("tabcontent");
+          for (i = 0; i < tabcontent.length; i++) {
+              tabcontent[i].style.display = "none";
+          }
+          tablinks = document.getElementsByClassName("tablinks");
+          for (i = 0; i < tablinks.length; i++) {
+              tablinks[i].className = tablinks[i].className.replace(" active", "");
+          }
+          document.getElementById(category).style.display = "block";
+          evt.currentTarget.className += " active";
+      }
+    </script>
+
+
     </div>
 
   </body>
