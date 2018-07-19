@@ -33,31 +33,31 @@
       <h2>And the Nominees Are...</h2>
     </div>
 
-    <!-- Tab links -->
-    <div id="nomineeTab" class="nomineeTab">
-        <script src="makeNomineeTabs_browserfyBundle.js"></script>
-    </div>
-
-    <!-- Tab content -->
-    <div id="tabcontent">
-
-        <script src="makeNomineeContent_browserfyBundle.js"></script>
-      <!-- <div id="Worst Actor" class="tabcontent">
-        <h3>Worst Actor</h3>
-        <p>Let's put the list of worst actors here</p>
+    <div style="width: 49%; float:left">
+      <!-- Tab links -->
+      <div id="nomineeTab" class="nomineeTab">
+          <script src="makeNomineeTabs_browserfyBundle.js"></script>
       </div>
 
-      <div id="Worst Actress" class="tabcontent">
-        <h3>Worst Actress</h3>
-        <p>Let's put the list of worst actresses here</p>
+      <!-- Tab content -->
+      <div id="tabcontent">
+          <script src="makeNomineeContent_browserfyBundle.js"></script>
+
       </div>
-
-      <div id="Worst Show" class="tabcontent">
-        <h3>Worst Show</h3>
-        <p>Let's put the list of worst shows here</p>
-      </div> -->
-
     </div>
+
+    <div style="width: 49%; float:right">
+      <div id="player">
+        <div id="video-placeholder"></div>
+        <script src="https://www.youtube.com/iframe_api"></script>
+        <iframe id="ytplayer" name="ytplayer" type="text/html" width="560" height="315" src="https://www.youtube.com/embed/M7lc1UVf-VE" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
+    </div>
+
+
+
+
+
     <script>
       function openCategory(evt, category) {
           var i, tabcontent, tablinks;
@@ -74,6 +74,7 @@
       }
     </script>
 
+    <!-- <p><a class="one" href="https://www.youtube.com/embed/fr55ie7LE50" target="ytplayer">Link Text</a></p> -->
 
     </div>
 
